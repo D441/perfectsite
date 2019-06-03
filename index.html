@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		let score = 0
+		let gross = 0
+		let x = function(arg){
+			return Math.random()*arg
+		}
+	let timer = function(){
+		var img = document.createElement("img")
+		img.src = "img.svg"
+		document.body.appendChild(img);
+		img.style.position = "absolute"
+		img.style.marginLeft = x(1300)+"px"
+		img.style.marginTop = x(600)+"px"
+		img.onclick = function(){
+			img.style.display = "none"
+			score = score + 1
+			document.querySelector(".score").innerHTML = score
+		}
+		img.style.height = "50px"
+		gross = gross + 1
+		document.querySelector(".gross").innerHTML = gross
+	}
+	let end = function(){
+		clearInterval(timerId)
+		if (gross-1 == score) {
+			alert("победа")
+		} 
+		else{
+			alert("проиграл")
+		}
+	}
+	var timerId = setInterval(timer,1000);
+	var ending = setTimeout(end, 10000)
+	</script>
+</head>
+<body style="background-image: url(bg.jpg);">
+		<p>ОЧКИ:
+			<span class="score">0</span>
+		</p>
+		<p>ЖУКИ:
+			<span class="gross">0</span>	
+		</p>
+</body>
+</html>
